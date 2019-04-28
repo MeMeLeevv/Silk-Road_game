@@ -5,10 +5,10 @@ ul, li { list-style: none; }
 
 .shutter {
   overflow: hidden;
-  width: 1500px;
-  height: 750px;
+  width: 1280px;
+  height: auto;
   position: relative;
-  margin: 40px auto;
+  margin: 10px auto;
   border-radius: 10px;
   border:1px solid #dff0d8;
   

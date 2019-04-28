@@ -8,7 +8,8 @@
 </head>
 <body>
 
-<div class="text-container" style="text-align: center; margin-top: 20px;margin-bottom: 0;color: #ffffff;">
+<div class="text-container" style="text-align: center; 
+margin-top: 20px;margin-bottom: 0;color: #ffffff;">
   <h1>
   <span class="text-static"></span>
   <span class="text"></span>
@@ -39,15 +40,16 @@
 <script>
 $(function () {
   $('.shutter').shutter({
-	shutterW: 1500 ,// 容器宽度
-	shutterH: 750, // 容器高度
+	shutterW:1200 ,// 容器宽度
+	shutterH: 600, // 容器高度
 	isAutoPlay: true, // 是否自动播放
 	playInterval: 10000, // 自动播放时间
 	curDisplay: 1, // 当前显示页
 	fullPage: false // 是否全屏展示
   });
-    myPrint(["带您探访埃及文明!"], 500);
+    myPrint(["带您探访埃及文明!"], 500);//可加入多个字符子数组
     function myPrint(arr, speed) {
+      //console.log(arr[0].substring(0,1),'arr')
         var index = 0;
         var str = arr[index];
         var i = 0;
@@ -57,24 +59,22 @@ $(function () {
             if (i == str.length + 4) {
                 add = false;
                 // 如果是最后一个字符串则终止循环函数
-                if (index + 1 >= arr.length) {
+                if (index + 1 >= arr.length) {//判断arr里的字符串是否都已经加载完毕
                     clearInterval(mySetInterval);
                 }
             } else if (i == -2) {
                 // 删除后延时2个字符的时间
                 add = true;
-                str = arr[++index];
+                str = arr[++index];//换下一个字符串
             }
-            setTimeout(function() {
+            console.log(str,'str');//'带您探访埃及文明'14
                 if (add) {
                     i++;
                     $(".text").html(str.substring(0, i));
                 } else {
-                    $(".text").html(str.substring(0, i - 1));
+                    $(".text").html(str.substring(0, i ));//8个字符后才会删除掉字符
                     i--;
                 }
-            })
-
         }, speed)
     }
 });

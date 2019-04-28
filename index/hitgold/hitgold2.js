@@ -16,7 +16,7 @@ function init() {
     let jiao = 89;//初始飞行角度
     let qiumoveX = 1.5;//控制left位移的正负
     let qiumoveY = -1.5;//控制top位移的正负
-    let bangleft = 225;//取挡板当前的左坐标，就是left距离
+    let bangleft = 225;//取挡板当前的左坐标，就是left距离//木板长度为150px
     let GoTime = null;//控制游戏进程
     let imgTime = document.getElementsByTagName("img")[2];
     imgTime.style.display = "block";
@@ -162,7 +162,8 @@ function init() {
             else {
                 qiumoveY = -1;
                 if ((qx - bangleft) >= (75)) {
-                    jiao = 90 - (qx - bangleft + 15 - 75) / 75 * 90;//正中心为90度，其他位置按距离差*90度
+                    jiao = 90 - (qx - bangleft + 15 - 75) / 75 * 90;//正中心为90度，其他位置按距离差*90度，
+                    //增加15度来预防出现小球垂直发射
                     //qiumoveX = 1;
                 } else {
                     jiao = 90 - (75 - (qx - bangleft + 15)) / 75 * 90;
@@ -171,7 +172,7 @@ function init() {
             }
         }
         else {
-            if (qy <= 360) {//x/y都可以减少计算
+            if (qy <= 360) {//x/y都可以减少计算，进入金币碰撞检测区
                 for (let i = 0; i < zdivs.length; i++) {
                     let io = checkIsP(qx, qy, zdivs[i].offsetLeft, zdivs[i].offsetTop);
                     if (i === 0) {
@@ -188,7 +189,7 @@ function init() {
                         setTimeout(function(){
                             zdivs[i].style.display = "none";
                         },50)
-                        //zdivs[i].style.display = "none";
+                    
                         if (i === 0) {//直接晋级
                             alert("晋级！");
                             n += 100;
@@ -200,13 +201,10 @@ function init() {
                                 jew = false;
                             }
                         }
-                        /*    else {
-                                n+=1;
-                                console.log(n);
-                            }*/
+                 
                         score.innerHTML = n;
                         zdivs.splice(i, 1);
-                        if (n >= 10) {
+                        if (n >= 10) {//设置达标分数
                             goodforyImgShow();
                             gameOver();
                             run = false;
@@ -272,16 +270,16 @@ function init() {
                             }, 10);
 
                         }
-                        if (io1 == 1) {
+                        if (io1 == 1) {//右
                             qiumoveX = 1;
                         }
-                        if (io1 == 2) {
+                        if (io1 == 2) {//左
                             qiumoveX = -1;
                         }
-                        if (io1 == 3) {
+                        if (io1 == 3) {//下
                             qiumoveY = 1;
                         }
-                        if (io1 == 4) {
+                        if (io1 == 4) {//上
                             qiumoveY = -1;
                         }
                         break;//直接跳出for循环
@@ -305,7 +303,7 @@ function init() {
             x1: qx + 15,
             y1: qy + 15
         }
-        let Div = {//
+        let Div = {//金币半径
             x: divX,
             y: divY,
             x1: divX + 20,
@@ -315,9 +313,11 @@ function init() {
         let Yer;
         Xer = ball.x >= Div.x ? ball.x : Div.x;//哪个横轴最大
         Yer = ball.y >= Div.y ? ball.y : Div.y;//哪个纵轴最大
-        if (Xer >= ball.x && Xer <= ball.x1 && Yer >= ball.y && Yer <= ball.y1 && Xer >= Div.x && Xer <= Div.x1 && Yer >= Div.y && Yer <= Div.y1) {//两者有交集
+        if (Xer >= ball.x && Xer <= ball.x1 && Yer >= ball.y && Yer <= ball.y1 &&
+             Xer >= Div.x && Xer <= Div.x1 && Yer >= Div.y && Yer <= Div.y1) {//两者有交集
 
-            return LenthSmaller(Math.abs(ball.x - Div.x1), Math.abs(ball.x1 - Div.x), Math.abs(ball.y - Div.y1), Math.abs(ball.y1 - Div.y));//判断是那边被碰
+            return LenthSmaller(Math.abs(ball.x - Div.x1), Math.abs(ball.x1 - Div.x), 
+            Math.abs(ball.y - Div.y1), Math.abs(ball.y1 - Div.y));//判断是那边被碰
             //右左下上区分，距离最小为准
 
         } else {
@@ -384,13 +384,7 @@ function init() {
         let ng = document.getElementById("nextpage");
         let st = document.getElementById("start");
         let home = document.getElementById("back");
-        /*  window.clearTimeout(Count);
-          Count = setTimeout(function () {
-              let imgTime = document.getElementsByTagName("img")[0];
-              imgTime.style.display = "none";
-              go();
-              flatmove();
-          }, 4500);*/
+      
         st.onclick = function () {
             let imgTime = document.getElementsByTagName("img")[2];
             imgTime.style.display = "none";
