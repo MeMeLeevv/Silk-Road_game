@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>丝绸之路</title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    <link href="css/map.css" rel="stylesheet">
+    <link href="css/video-js.css" rel="stylesheet">
+</head>
+
+<body>
+    <div data-role="page" id="pageone">
+        <div data-role="header" data-position="fixed">
+            <h1>欢迎来到视频区</h1>
+            <a href="#pagetwo" data-transition="flip">跳转到地图区</a>
+        </div>
+    </div>
+    <div role="main">
+        <div class="m">
+            <video id="my-video" class="video-js" controls preload="auto" width="1050" height="560"
+                poster="map/poster.png" data-setup="{}">
+                <source src="video.mp4" type="video/mp4">
+                <p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web
+                    browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5
+                        video</a> </p>
+            </video>
+
+            <script type="text/javascript">
+                var myPlayer = videojs('my-video');
+                videojs("my-video").ready(function () {
+                    var myPlayer = this;
+                    myPlayer.play();
+                });
+
+            </script>
+        </div>
+    </div>
+    <div data-role="footer">
+    </div>
+    </div>
+
+    <div data-role="page" id="pagetwo">
+
+        <div data-role="header">
+            <h1>欢迎来到地图探索区</h1>
+            <a href="#pageone" data-transition="flip">返回到视频区</a>
+        </div>
+        <div role="main">
+            <div id="maptu">
+                <div id="loulan">
+                    <a href="#" target="_blank"><img src="map/loulan.png"></a>
+                </div>
+                <div id="tulufan">
+                    <a href="#" target="_blank"><img src="map/tulufan.png"></a>
+                </div>
+                <div id="bageda">
+                    <a href="index/hitgold/hitgold2.html" target="_blank"><img src="map/bageda.png"></a>
+                </div>
+                <div id="aiji">
+                    <a href="index/aiji/aiji.html" target="_blank"><img src="map/aiji.png"></a>
+                </div>
+                <div id="jiayuguan">
+                    <a href="#" target="_blank"><img src="map/jiayuguan.png"></a>
+                </div>
+                <div id="yindu">
+                    <a href="#" target="_blank"><img src="map/yindu.png"></a>
+                </div>
+                <div id="xian">
+                    <a href="#" target="_blank"><img src="map/xian.png"></a>
+                </div>
+                <div id="xiaoren" style="position:relative;left: 80%;top:65%;width: 3%;height: 68.55px;">
+                    <img src="map/back.png" class="xiaoren">
+                    <h2 id="kuang">是否进入？</h2>
+                    <div id="jieshao"></div>
+                </div>
+
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed">
+        </div>
+    </div>
+</body>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/map.js"></script>
+<script src="js/video.min.js"></script>
+<script src="js/zh-CN.js"></script>
+
+</html>

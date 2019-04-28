@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>埃及文明</title>
+
+<link rel="stylesheet" href="css/shutter.css">
+</head>
+<body>
+
+<div class="text-container" style="text-align: center; margin-top: 20px;margin-bottom: 0;color: #ffffff;">
+  <h1>
+  <span class="text-static"></span>
+  <span class="text"></span>
+<!--  <span class="cursor">|</span>-->
+  </h1>
+</div>
+<div class="shutter">
+<div class="shutter-img">
+  <a href="#" data-shutter-title="埃及法老——是古埃及国王的尊称"><img src="images/falao.jpg" alt="#"></a>
+  <a href="#" data-shutter-title="埃及壁画——埃及陵墓装饰中不可缺少的组成部分。这是古埃及最主要的绘画形式。"><img src="images/bihua.jpg" alt="#"></a>
+  <a href="#" data-shutter-title="埃及象形文字"><img src="images/xiangx.jpg" alt="#"></a>
+   <a href="#" data-shutter-title="埃及金字塔——古埃及的帝王（法老）陵墓。世界七大奇迹之一。"><img src="images/jinzita.jpg" alt="#"></a>
+  <a href="#" data-shutter-title="狮身人面像——狮子身体标志着武力，法老头像标志着智慧,两者合一就是武力与智慧的结合体,  埃及人经常用人面狮身像来作为甬道边的排列装饰。"><img src="images/renmian.jpg" alt="#"></a>
+  <a href="#" data-shutter-title="卡纳克神庙——太阳神阿蒙神的崇拜中心，古埃及最大的神庙所在地神庙内有大小20余座神殿、134根巨型石柱、狮身公羊石像等古迹，气势宏伟，令人震撼。"><img src="images/kana.jpg" alt="#"></a>
+</div>
+<ul class="shutter-btn">
+  <li class="prev"></li>
+  <li class="next"></li>
+</ul>
+<div class="shutter-desc">
+  <p>埃及法老——是古埃及国王的尊称</p>
+</div>
+</div>
+
+<script src="../jquery-1.11.0.min.js"></script>
+<script src="js/velocity.js"></script>
+<script src="js/shutter.js"></script>
+<script>
+$(function () {
+  $('.shutter').shutter({
+	shutterW: 1500 ,// 容器宽度
+	shutterH: 750, // 容器高度
+	isAutoPlay: true, // 是否自动播放
+	playInterval: 10000, // 自动播放时间
+	curDisplay: 1, // 当前显示页
+	fullPage: false // 是否全屏展示
+  });
+    myPrint(["带您探访埃及文明!"], 500);
+    function myPrint(arr, speed) {
+        var index = 0;
+        var str = arr[index];
+        var i = 0;
+        var add = true;
+        var mySetInterval = setInterval(function() {
+            // 延时4个字符的时间
+            if (i == str.length + 4) {
+                add = false;
+                // 如果是最后一个字符串则终止循环函数
+                if (index + 1 >= arr.length) {
+                    clearInterval(mySetInterval);
+                }
+            } else if (i == -2) {
+                // 删除后延时2个字符的时间
+                add = true;
+                str = arr[++index];
+            }
+            setTimeout(function() {
+                if (add) {
+                    i++;
+                    $(".text").html(str.substring(0, i));
+                } else {
+                    $(".text").html(str.substring(0, i - 1));
+                    i--;
+                }
+            })
+
+        }, speed)
+    }
+});
+</script>
+
+
+</body>
+</html>
