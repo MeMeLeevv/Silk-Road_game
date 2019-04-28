@@ -15,7 +15,8 @@
 <p>游戏失败</p>
 <img src='https://github.com/MeMeLeevv/Silk-Road_game/raw/master/map/lose.png' width='600' alt= 'gameLose'>
 <p>埃及文明介绍</p>
-<img src='https://github.com/MeMeLeevv/Silk-Road_game/raw/master/map/埃及.png' width='600' alt= 'Egypt'><br>
-
->### *视频以及图标这些都是舍友们辛苦原创的！所以转载请注明出处！*
+<img src='https://github.com/MeMeLeevv/Silk-Road_game/raw/master/map/埃及.png' width='600' alt= 'Egypt'>
+<br>
+<br>
+>### *[视频以及图标这些都是舍友们辛苦原创的！所以转载请注明出处！](https://github.com/MeMeLeevv/Silk-Road_game)*
 </div>
